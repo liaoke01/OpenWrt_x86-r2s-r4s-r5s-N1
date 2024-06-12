@@ -36,3 +36,12 @@
  		partitions {
  			compatible = "fixed-partitions";
  			#address-cells = <1>;
+@@ -223,7 +227,7 @@
+ 			partition@980000 {
+ 				compatible = "linux,ubi";
+ 				label = "ubi";
+-				reg = <0x980000 0x7680000>;
++				reg = <0x980000 0x6e00000>;
+ 
+ 				volumes {
+ 					ubi_rootdisk: ubi-volume-fit {
