@@ -218,13 +218,10 @@ jobs:
     - name: Defconfig
       run: |
         cd openwrt
-        make defconfig
-        if [[ ! "${{matrix.target}}" =~ (armsr_armv8|bcm27xx_*|rockchip_*|sunxi_*|x86_*) ]]; then
         sed -n '/# Wireless Drivers/,/# end of Wireless Drivers/p' .config | sed -e 's/=m/=n/' >>.config
         sed -i "s/\(kmod-qca.*\)=m/\1=n/" .config
-        make defconfig
-                echo 'CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r2s=y' >> .config
-        fi
+        #echo 'CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r2s=y' >> .config
+        make oldconfig
         cat .config
 
     - name: Download package
