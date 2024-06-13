@@ -221,7 +221,7 @@ jobs:
         sed -n '/# Wireless Drivers/,/# end of Wireless Drivers/p' .config | sed -e 's/=m/=n/' >>.config
         sed -i "s/\(kmod-qca.*\)=m/\1=n/" .config
         #echo 'CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r2s=y' >> .config
-        make oldconfig
+        make olddefconfig
         cat .config
 
     - name: Download package
